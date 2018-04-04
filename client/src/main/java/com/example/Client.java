@@ -33,11 +33,9 @@ public class Client {
                     .subscribe(n -> log.info("Next: {}", n.getId()),
                             e -> log.error("Error: {}", e),
                             () -> log.info("Completed"));
-            while (true) {
-                //I want to gracefully cancel subscription when I'm not interested in it anymore (for sake of this example - after 10 seconds)
-                Thread.sleep(10000);
-                disposable.dispose();
-            }
+            //I want to gracefully cancel subscription when I'm not interested in it anymore (for sake of this example - after 10 seconds)
+            Thread.sleep(10000);
+            disposable.dispose();
         };
     }
 }
